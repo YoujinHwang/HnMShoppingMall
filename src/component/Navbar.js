@@ -2,18 +2,33 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-const Navbar = () => {
+import { useNavigate } from 'react-router-dom'
+const Navbar = ({authenticate,setAuthenticate}) => {
     const menuList=['여성','Divided',"남성","신생아/유아","H&M Home","Sale","지속가능성",];
-  return (<div>
+    const navigate=useNavigate()
+    
+    const goToLogin=()=>{
+        navigate("/login");
+    }
+  
+  return (
+  <div>
     <div>
-        <div class="login-button">
+        {authenticate ? (
+            <div class="logout-button" onClick={()=>setAuthenticate(false)}>
+            <FontAwesomeIcon icon={faUser}/>
+            <div>로그아웃</div>
+        </div>
+        ):(
+        <div class="login-button" onClick={goToLogin}>
             <FontAwesomeIcon icon={faUser}/>
             <div>로그인</div>
         </div>
+        )}
         
     </div>
     <div className="nav-section">
-        <img
+        <img alt=""
             width={100}
             src="https://thumbs.dreamstime.com/z/hm-h-m-logo-editorial-illustrative-white-background-icon-vector-logos-icons-set-social-media-flat-banner-vectors-svg-eps-jpg-210442760.jpg"/>
     </div>
@@ -25,7 +40,7 @@ const Navbar = () => {
             ))}
         </ul>
         
-        <div className="search">
+        <div className="search-box">
             <FontAwesomeIcon icon={faSearch}/>
             <input type="text"/>
         </div>
