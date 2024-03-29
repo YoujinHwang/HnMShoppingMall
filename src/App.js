@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
 import ProductAll from './page/ProductAll';
 import Login from './page/Login';
 import Navbar from './component/Navbar';
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import PrivateRoute from './route/PrivateRoute';
 
 //1.전체 상품 페이지, 로그인, 상품상세페이지
